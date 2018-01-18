@@ -12,3 +12,10 @@ func Add(ctx *gin.Context) {
 		"data":  res,
 	})
 }
+
+func Find(ctx *gin.Context) {
+	ctx.JSON(200, gin.H{
+		"error": nil,
+		"data":  nil,
+	})
+}

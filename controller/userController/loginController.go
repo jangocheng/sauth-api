@@ -30,14 +30,13 @@ func Authenticate() gin.HandlerFunc {
 			ctx.Next()
 			return
 		}
-		count, err := userService.AuthVerify(ctx)
+		count, err := userService.AuthVerify(ctx) // 访问权限验证
 		if "0" == count { // 认证失败
 			ctx.JSON(200, gin.H{
-				"status":  false,
 				"code":    "F_AuthVerify_01",
 				"message": "用户权限认证失败",
 				"data":    LoginAddress,
-				"error":   err,
+				"err":     err,
 			})
 			ctx.Abort() // 终止计划
 			return
