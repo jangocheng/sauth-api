@@ -19,7 +19,7 @@ func Router(engine *gin.Engine) {
 	v1 := engine.Group("auth/api/v1") // 路由分组
 	{
 		// ping
-		v1.GET("/ping", controller.PingController{}.GET)
+		v1.GET("/ping", controller.Ping)
 
 		// 应用
 		v1.GET("/app/all", appController.All)
@@ -29,8 +29,9 @@ func Router(engine *gin.Engine) {
 		v1.GET("/app/options", appController.Options)
 
 		// 用户
-		v1.POST("user/add", userController.Add)
-		v1.POST("user/login", userController.Login)
+		v1.POST("/user/add", userController.Add)
+		v1.POST("/user/login", userController.Login)
+		v1.POST("/user/find", userController.Find)
 
 		// 角色
 		v1.GET("/role/all", roleController.All)

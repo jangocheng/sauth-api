@@ -2,6 +2,7 @@ package util
 
 /*
 	结果集数据类型转换
+	[]map[string][]byte >> []map[string]interface{}
 */
 func DataTrans(in []map[string][]byte) []map[string]interface{} {
 	var data []map[string]interface{}

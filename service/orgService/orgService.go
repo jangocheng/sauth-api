@@ -14,6 +14,7 @@ func Find(ctx *gin.Context) ([]orgModel.Org, error) {
 	return model, err
 }
 
+// 保存机构
 func Save(ctx *gin.Context) (int64, error) {
 	var model orgModel.Org
 	var res int64
@@ -22,16 +23,22 @@ func Save(ctx *gin.Context) (int64, error) {
 	if nil != err {
 		return -1, err
 	}
-	if "" != model.Uuid {
+	userName, _ := ctx.Cookie(util.AuthUserCookieId)
+	if "" != model.Uuid { // update
+		model.UpdateUser = userName
 		res, err = db.Engine.Update(&model, &orgModel.Org{Uuid: model.Uuid})
-	} else {
+	} else { // insert
 		model.Uuid = util.GetUuid()
-		model.Id = model.TenantId + `-` + model.OrgId
+		model.Id = model.TenantId + `-` + model.OrgId // Id = TenantId + OrgId
+		model.CreateUser = userName
+		model.UpdateUser = userName
+
 		res, err = db.Engine.Insert(&model)
 	}
 	return res, err
 }
 
+// 删除机构
 func Delete(ctx *gin.Context) (sql.Result, error) {
 	var model orgModel.Org
 	err := ctx.Bind(&model)

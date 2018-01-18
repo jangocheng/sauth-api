@@ -12,6 +12,7 @@ type Org struct {
 	Pid        string                     // 上级机构编号
 	OrgId      string                     // 机构 ID
 	TenantId   string                     // 租户 ID
+	Comment    string                     // 说明
 	CreateTime time.Time `xorm:"created"` // 创建时间
 	CreateUser string                     // 创建者
 	UpdateTime time.Time `xorm:"updated"` // 修改时间
