@@ -1,0 +1,6 @@
+{
+  "driverName": "mysql",
+  "dataSourceName": "root:yeqc@tcp(45.76.192.20:3306)/tjauth?charset=utf8",
+  "redisConnectAddress": "45.76.192.20:6379",
+  "redisConnectPassword": ""
+}
