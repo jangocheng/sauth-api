@@ -29,9 +29,13 @@ func Router(engine *gin.Engine) {
 		v1.GET("/app/options", appController.Options)
 
 		// 用户
-		v1.POST("/user/add", userController.Add)
+		v1.POST("/user/save", userController.Save)
 		v1.POST("/user/login", userController.Login)
-		v1.POST("/user/find", userController.Find)
+		v1.POST("/user/logout", userController.Logout)
+		v1.POST("/user/delete", userController.Delete)
+		v1.GET("/user/all", userController.All)
+		v1.GET("/user/find", userController.Find)
+		v1.GET("/user/api/own", userController.GetOwnInfo) // 写回 cookie
 
 		// 角色
 		v1.GET("/role/all", roleController.All)

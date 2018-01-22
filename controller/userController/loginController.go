@@ -22,6 +22,17 @@ func Login(ctx *gin.Context) {
 }
 
 /*
+	登出
+*/
+func Logout(ctx *gin.Context) {
+	err := userService.Logout(ctx)
+	ctx.JSON(200, gin.H{
+		"data": nil,
+		"err":  err,
+	})
+}
+
+/*
 	cookie 权限认证
 */
 func Authenticate() gin.HandlerFunc {

@@ -5,17 +5,33 @@ import (
 	"sauth/service/userService"
 )
 
-func Add(ctx *gin.Context) {
-	res, err := userService.Add(ctx)
+func Delete(ctx *gin.Context) {
+	res, err := userService.Delete(ctx)
 	ctx.JSON(200, gin.H{
-		"error": err,
-		"data":  res,
+		"err":  err,
+		"data": res,
+	})
+}
+
+func Save(ctx *gin.Context) {
+	res, err := userService.Save(ctx)
+	ctx.JSON(200, gin.H{
+		"err":  err,
+		"data": res,
+	})
+}
+
+func All(ctx *gin.Context) {
+	res, err := userService.All(ctx)
+	ctx.JSON(200, gin.H{
+		"err":  err,
+		"data": res,
 	})
 }
 
 func Find(ctx *gin.Context) {
 	ctx.JSON(200, gin.H{
-		"error": nil,
-		"data":  nil,
+		"err":  nil,
+		"data": nil,
 	})
 }
