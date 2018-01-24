@@ -9,6 +9,7 @@ import (
 	"sauth/controller/functionController"
 	"sauth/controller/roleFunctionController"
 	"sauth/controller/orgController"
+	"sauth/controller/userRoleController"
 )
 
 /*
@@ -55,5 +56,9 @@ func Router(engine *gin.Engine) {
 		v1.GET("/org/find", orgController.Find)
 		v1.POST("/org/save", orgController.Save)
 		v1.POST("/org/delete", orgController.Delete)
+
+		// 用户-角色
+		v1.POST("/userRole/save", userRoleController.Save)
+		v1.GET("/userRole/find", userRoleController.Find)
 	}
 }

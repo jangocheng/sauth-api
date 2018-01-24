@@ -14,6 +14,7 @@ func Save(ctx *gin.Context) (int64, error) {
 	if nil != err {
 		return -1, err
 	}
+
 	functionData := postData.FunctionData // 功能
 	roleData := postData.RoleData         // 角色
 

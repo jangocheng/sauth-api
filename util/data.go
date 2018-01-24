@@ -5,7 +5,7 @@ package util
 	[]map[string][]byte >> []map[string]interface{}
 */
 func DataTrans(in []map[string][]byte) []map[string]interface{} {
-	var data []map[string]interface{}
+	data := make([]map[string]interface{}, 0)
 	for _, m := range in {
 		e := make(map[string]interface{})
 		for k, v := range m {
@@ -13,7 +13,7 @@ func DataTrans(in []map[string][]byte) []map[string]interface{} {
 			e[k] = str
 		}
 		data = append(data, e)
-		e = nil
+		e = nil // 清除 map
 	}
 	return data
 }
